@@ -1,0 +1,20 @@
+server:
+  port: 443
+  ssl:
+    key-store: /ssl_keystore.keystore
+    key-store-password: changeit
+eureka:
+  instance:
+#    prefer-ip-address: true
+    hostname: localhost
+    secure-port: ${server.port}
+    non-secure-port: 80
+    secure-port-enabled: true
+    non-secure-port-enabled: false
+    lease-renewal-interval-in-seconds: 3
+    lease-expiration-duration-in-seconds: 3
+#    status-page-url: https://localhost:${server.port}/info
+  client:
+    service-url:
+      defaultZone: https://localhost:8761/discoveryServer/eureka/
+    initial-instance-info-replication-interval-seconds: 3
