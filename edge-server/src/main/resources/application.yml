@@ -30,6 +30,7 @@ zuul:
   routes:
     pp-ui: /pp-ui/**
     pcm: /pcm/**
+    phr: /phr/**
     uaa:
       path: /uaa/**
       url: https://localhost:8443/uaa
