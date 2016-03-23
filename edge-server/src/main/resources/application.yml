@@ -32,6 +32,9 @@ zuul:
     uaa:
       path: /uaa/**
       url: https://localhost:8443/uaa
+    pls:
+      path: /pls/**
+      url: https://localhost:8443/pls
 mhc:
   edge-server:
     root-redirect-url: redirect:/pp-ui
