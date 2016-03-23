@@ -7,6 +7,7 @@ info:
   component: Edge Server
 eureka:
   instance:
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${random.value}}
 #    prefer-ip-address: true
     hostname: localhost
     secure-port: ${server.port}
@@ -19,6 +20,18 @@ eureka:
     health-check-url: https://${eureka.instance.hostname}/health
     home-page-url: https://${eureka.instance.hostname}/
   client:
+    healthcheck:
+      enabled: true
     service-url:
-      defaultZone: https://localhost:8761/discoveryServer/eureka/
+      defaultZone: https://localhost:8761/eureka/
 #    initial-instance-info-replication-interval-seconds: 3
+zuul:
+  ignoredServices: '*'
+  routes:
+    pp-ui: /pp-ui/**
+    uaa:
+      path: /uaa/**
+      url: https://localhost:8443/uaa
+mhc:
+  edge-server:
+    root-redirect-url: redirect:/pp-ui
