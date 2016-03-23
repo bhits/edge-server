@@ -29,6 +29,7 @@ zuul:
   ignoredServices: '*'
   routes:
     pp-ui: /pp-ui/**
+    pcm: /pcm/**
     uaa:
       path: /uaa/**
       url: https://localhost:8443/uaa
