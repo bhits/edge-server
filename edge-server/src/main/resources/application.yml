@@ -1,8 +1,6 @@
 server:
-  port: 443
-  ssl:
-    key-store: /ssl_keystore.keystore
-    key-store-password: changeit
+  port: 80
+spring.profiles.active: ssl,eureka-ssl
 info:
   component: Edge Server
 eureka:
@@ -11,19 +9,14 @@ eureka:
 #    prefer-ip-address: true
     hostname: localhost
     secure-port: ${server.port}
-    non-secure-port: 80
-    secure-port-enabled: true
-    non-secure-port-enabled: false
-#    lease-renewal-interval-in-seconds: 30
-#    lease-expiration-duration-in-seconds: 3
-    status-page-url: https://${eureka.instance.hostname}/info
-    health-check-url: https://${eureka.instance.hostname}/health
-    home-page-url: https://${eureka.instance.hostname}/
+    non-secure-port: ${server.port}
+    secure-port-enabled: false
+    non-secure-port-enabled: true
   client:
     healthcheck:
       enabled: true
     service-url:
-      defaultZone: https://localhost:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
 #    initial-instance-info-replication-interval-seconds: 3
 zuul:
   ignoredServices: '*'
@@ -40,3 +33,33 @@ zuul:
 mhc:
   edge-server:
     root-redirect-url: redirect:/pp-ui
+logging:
+  level:
+    org.springframework.cloud.netflix: trace
+---
+spring.profiles: ssl
+server:
+  port: 443
+  ssl:
+    key-store: /ssl_keystore.keystore
+    key-store-password: changeit
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${random.value}}
+#    prefer-ip-address: true
+    hostname: localhost
+    secure-port: ${server.port}
+    non-secure-port: 80
+    secure-port-enabled: true
+    non-secure-port-enabled: false
+#    lease-renewal-interval-in-seconds: 30
+#    lease-expiration-duration-in-seconds: 3
+    status-page-url: https://${eureka.instance.hostname}/info
+    health-check-url: https://${eureka.instance.hostname}/health
+    home-page-url: https://${eureka.instance.hostname}/
+---
+spring.profiles: eureka-ssl
+eureka:
+  client:
+    service-url:
+      defaultZone: https://localhost:8761/eureka/
