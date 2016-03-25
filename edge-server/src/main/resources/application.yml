@@ -22,6 +22,7 @@ zuul:
   ignoredServices: '*'
   routes:
     pp-ui: /pp-ui/**
+    admin-ui: /admin-ui/**
     pcm: /pcm/**
     phr: /phr/**
     trypolicy: /trypolicy/**
