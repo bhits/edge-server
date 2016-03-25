@@ -24,6 +24,7 @@ zuul:
     pp-ui: /pp-ui/**
     pcm: /pcm/**
     phr: /phr/**
+    trypolicy: /trypolicy/**
     uaa:
       path: /uaa/**
       url: https://localhost:8443/uaa
