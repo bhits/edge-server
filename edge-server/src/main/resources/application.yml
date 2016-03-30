@@ -18,6 +18,8 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka/
 #    initial-instance-info-replication-interval-seconds: 3
+# TODO: until finding a better solution, disable hystrix command timeout in edge server. See https://github.com/spring-cloud/spring-cloud-netflix/issues/321#issuecomment-97727313
+hystrix.command.default.execution.timeout.enabled: false
 zuul:
   ignoredServices: '*'
   routes:
@@ -38,7 +40,7 @@ mhc:
     root-redirect-url: redirect:/pp-ui
 logging:
   level:
-    org.springframework.cloud.netflix: trace
+    org.springframework.cloud.netflix: info
 ---
 spring.profiles: ssl
 server:
