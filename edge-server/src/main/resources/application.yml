@@ -27,9 +27,9 @@ zuul:
     admin-ui: /admin-ui/**
     pcm: /pcm/**
     phr: /phr/**
-    trypolicy: /trypolicy/**
-    patientRegistration: /patientRegistration/**
-    patientUser: /patientUser/**
+    try-policy: /trypolicy/**
+    patient-registration: /patientRegistration/**
+    patient-user: /patientUser/**
     uaa:
       path: /uaa/**
       url: https://localhost:8443/uaa
