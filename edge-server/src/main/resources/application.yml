@@ -40,6 +40,7 @@ mhc:
   edge-server:
     root-redirect-url: redirect:/pp-ui
 logging:
+  file: /java/MHC_LOGS/edge-server/edgeServer.log
   level:
     org.springframework.cloud.netflix: info
 ---
