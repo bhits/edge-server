@@ -81,6 +81,8 @@ eureka:
   client:
     service-url:
       defaultZone: https://discovery-server.mhc.com:8761/eureka/
+  instance:
+    prefer-ip-address: true
 zuul:
   routes:
     uaa:
@@ -89,4 +91,3 @@ zuul:
     pls:
       path: /pls/**
       url: https://pls.mhc.com:8443/pls
-eureka.client.service-url.defaultZone: https://discovery-server.mhc.com:8761/eureka/
