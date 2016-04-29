@@ -3,8 +3,6 @@ package gov.samhsa.mhc.edgeserver.filters.post;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 
-import javax.servlet.http.HttpServletResponse;
-import java.util.Collection;
 import java.util.List;
 import com.netflix.util.Pair;
 import org.springframework.beans.factory.annotation.Value;
