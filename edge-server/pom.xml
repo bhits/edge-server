@@ -75,6 +75,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.netflix.netflix-commons</groupId>
+			<artifactId>netflix-commons-util</artifactId>
+			<version>0.1.2</version>
+		</dependency>
 	</dependencies>
 	
 	<dependencyManagement>

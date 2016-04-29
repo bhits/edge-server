@@ -43,6 +43,10 @@ logging:
   file: /java/MHC_LOGS/edge-server/edgeServer.log
   level:
     org.springframework.cloud.netflix: info
+response:
+  header:
+    key: WWW-Authenticate
+    value: Application driven
 ---
 spring.profiles: ssl
 server:
