@@ -21,7 +21,7 @@ eureka:
 # TODO: until finding a better solution, disable hystrix command timeout in edge server. See https://github.com/spring-cloud/spring-cloud-netflix/issues/321#issuecomment-97727313
 hystrix.command.default.execution.timeout.enabled: false
 ribbon:
-  ReadTimeout: 5000
+  ReadTimeout: 50000
 zuul:
   ignoredServices: '*'
   routes:
