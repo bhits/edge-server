@@ -27,6 +27,7 @@ zuul:
   routes:
     pp-ui: /pp-ui/**
     admin-ui: /admin-ui/**
+    pep: /pep/**
     pcm: /pcm/**
     phr: /phr/**
     try-policy: /trypolicy/**
