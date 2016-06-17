@@ -25,16 +25,30 @@ ribbon:
 zuul:
   ignoredServices: '*'
   routes:
-    pp-ui: /pp-ui/**
-    admin-ui: /admin-ui/**
-    pep: /pep/**
-    pcm: /pcm/**
-    phr: /phr/**
-    try-policy: /trypolicy/**
-    patient-registration: /patientRegistration/**
-    patient-user: /patientUser/**
+    pp-ui:
+      path: /pp-ui/**
+    admin-ui:
+      path: /admin-ui/**
+    pep:
+      path: /pep/**
+      sensitiveHeaders: Cookie,Set-Cookie
+    pcm:
+      path: /pcm/**
+      sensitiveHeaders: Cookie,Set-Cookie
+    phr:
+      path: /phr/**
+      sensitiveHeaders: Cookie,Set-Cookie
+    try-policy:
+      path: /trypolicy/**
+    patient-registration:
+      path: /patientRegistration/**
+      sensitiveHeaders: Cookie,Set-Cookie
+    patient-user:
+      path: /patientUser/**
+      sensitiveHeaders: Cookie,Set-Cookie
     uaa:
       path: /uaa/**
+      sensitiveHeaders: Cookie,Set-Cookie
       url: https://localhost:8443/uaa
     pls:
       path: /pls/**
@@ -94,6 +108,7 @@ zuul:
   routes:
     uaa:
       path: /uaa/**
+      sensitiveHeaders: Cookie,Set-Cookie
       url: https://uaa.mhc.com:8443/uaa
     pls:
       path: /pls/**
