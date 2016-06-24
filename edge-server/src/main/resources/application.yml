@@ -25,29 +25,43 @@ ribbon:
 zuul:
   ignoredServices: '*'
   routes:
+    # NOTE regarding 'sensitiveHeaders' properties:
+    #      By default, Zuul will strip the 'Cookie', 'Set-Cookie', and 'Authorization' HTTP headers
+    #      from incoming HTTP requests before forwarding them to the appropriate downstream services.
+    #      Since UAA and UAA-secured services require the 'Authorization' header to work, you must
+    #      set the 'sensativeHeaders' property for secured routes to only strip out 'Cookie' and
+    #      'Set-Cookie' headers.
+    #
+    #      For more info, see: http://cloud.spring.io/spring-cloud-static/spring-cloud.html#_cookies_and_sensitive_headers
     pp-ui:
       path: /pp-ui/**
     admin-ui:
       path: /admin-ui/**
     pep:
       path: /pep/**
+      # Override Zuul default:
       sensitiveHeaders: Cookie,Set-Cookie
     pcm:
       path: /pcm/**
+      # Override Zuul default:
       sensitiveHeaders: Cookie,Set-Cookie
     phr:
       path: /phr/**
+      # Override Zuul default:
       sensitiveHeaders: Cookie,Set-Cookie
     try-policy:
       path: /trypolicy/**
     patient-registration:
       path: /patientRegistration/**
+      # Override Zuul default:
       sensitiveHeaders: Cookie,Set-Cookie
     patient-user:
       path: /patientUser/**
+      # Override Zuul default:
       sensitiveHeaders: Cookie,Set-Cookie
     uaa:
       path: /uaa/**
+      # Override Zuul default:
       sensitiveHeaders: Cookie,Set-Cookie
       url: https://localhost:8443/uaa
     pls:
