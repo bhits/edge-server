@@ -122,7 +122,6 @@ zuul:
   routes:
     uaa:
       path: /uaa/**
-      sensitiveHeaders: Cookie,Set-Cookie
       url: https://uaa.mhc.com:8443/uaa
     pls:
       path: /pls/**
