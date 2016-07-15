@@ -5,7 +5,7 @@
 
 	<groupId>gov.samhsa.mhc</groupId>
 	<artifactId>edge-server</artifactId>
-	<version>0.4.0-SNAPSHOT</version>
+	<version>0.4.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Edge Server</name>
@@ -46,7 +46,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.3.5.RELEASE</version>
+		<version>1.4.0.RC1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
