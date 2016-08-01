@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>gov.samhsa.mhc</groupId>
+	<groupId>gov.samhsa.c2s</groupId>
 	<artifactId>edge-server</artifactId>
 	<version>0.6.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Edge Server</name>
-	<description>Edge Server for MHC Applications</description>
+	<description>Edge Server for C2S Applications</description>
 
 	<scm>
 		<url>https://github.com/FEISystems/edge-server.git</url>
