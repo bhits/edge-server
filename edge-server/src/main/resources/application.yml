@@ -50,7 +50,9 @@ zuul:
       # Override Zuul default:
       sensitiveHeaders: Cookie,Set-Cookie
     try-policy:
-      path: /trypolicy/**
+      path: /tryPolicy/**
+      # Override Zuul default:
+      sensitiveHeaders: Cookie,Set-Cookie
     patient-registration:
       path: /patientRegistration/**
       # Override Zuul default:
