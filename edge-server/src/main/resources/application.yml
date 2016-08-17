@@ -69,7 +69,7 @@ zuul:
     pls:
       path: /pls/**
       url: https://localhost:8443/pls
-mhc:
+c2s:
   edge-server:
     root-redirect-url: redirect:/pp-ui
 logging:
@@ -114,19 +114,19 @@ spring.profiles: docker
 server:
   port: 443
   ssl:
-    key-store: /java/keystore/mhc.keystore
+    key-store: /java/keystore/c2s.keystore
     key-store-password: changeit
 eureka:
   client:
     service-url:
-      defaultZone: https://discovery-server.mhc.com:8761/eureka/
+      defaultZone: https://discovery-server.c2s.com:8761/eureka/
   instance:
     prefer-ip-address: true
 zuul:
   routes:
     uaa:
       path: /uaa/**
-      url: https://uaa.mhc.com:8443/uaa
+      url: https://uaa.c2s.com:8443/uaa
     pls:
       path: /pls/**
-      url: https://pls.mhc.com:8443/pls
+      url: https://pls.c2s.com:8443/pls
