@@ -80,6 +80,21 @@ response:
   header:
     key: WWW-Authenticate
     value: Application driven
+# secure management endpoints
+management:
+  security:
+    enabled: true
+    sessions: never
+  context-path: /management
+security:
+  basic:
+    enabled: true
+    path: ${management.context-path}/**
+  user:
+    name: admin
+    password: changeit
+  require-ssl: true
+  sessions: never
 ---
 spring.profiles: ssl
 server:
