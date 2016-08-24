@@ -1,4 +1,4 @@
-package gov.samhsa.mhc.edgeserver;
+package gov.samhsa.c2s.edgeserver;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,6 +1,6 @@
-package gov.samhsa.mhc.edgeserver;
+package gov.samhsa.c2s.edgeserver;
 
-import gov.samhsa.mhc.edgeserver.filters.post.BasicAuthenticationEntryPointFilter;
+import gov.samhsa.c2s.edgeserver.filters.post.BasicAuthenticationEntryPointFilter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class EdgeServerApplication {
 
-    @Value("${mhc.edge-server.root-redirect-url}")
+    @Value("${c2s.edge-server.root-redirect-url}")
     private String rootRedirectUrl;
 
     @RequestMapping("/")
