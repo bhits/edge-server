@@ -145,7 +145,7 @@ zuul:
     pls:
       path: /pls/**
       url: https://pls.c2s.com:8443/pls
-	guvnor:
+    guvnor:
       path: /guvnor-5.5.0.Final-tomcat-6.0/**
       url: http://guvnor.c2s.com:8080/guvnor-5.5.0.Final-tomcat-6.0
     openempi:
