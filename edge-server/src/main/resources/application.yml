@@ -144,10 +144,7 @@ zuul:
       url: https://uaa.c2s.com:8443/uaa
     pls:
       path: /pls/**
-      url: https://pls.c2s.com:8443/pls
+      url: http://pls.c2s.com:8080/pls
     guvnor:
       path: /guvnor-5.5.0.Final-tomcat-6.0/**
       url: http://guvnor.c2s.com:8080/guvnor-5.5.0.Final-tomcat-6.0
-    openempi:
-      path: /openempi-admin/**
-      url: http://openempi.c2s.com:8080/openempi-admin
