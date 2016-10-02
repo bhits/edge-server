@@ -1,6 +1,5 @@
 server:
   port: 80
-spring.profiles.active: ssl,eureka-ssl
 info:
   component: Edge Server
 eureka:
@@ -16,7 +15,8 @@ eureka:
     healthcheck:
       enabled: true
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      # endpoint for discovery-server, pass '--eureka.client.protocol=https' if discovery-server is running on https
+      defaultZone: ${eureka.client.protocol:http}://localhost:8761/eureka/
 #    initial-instance-info-replication-interval-seconds: 3
 # TODO: until finding a better solution, disable hystrix command timeout in edge server. See https://github.com/spring-cloud/spring-cloud-netflix/issues/321#issuecomment-97727313
 hystrix.command.default.execution.timeout.enabled: false
@@ -65,10 +65,10 @@ zuul:
       path: /uaa/**
       # Override Zuul default:
       sensitiveHeaders: Cookie,Set-Cookie
-      url: https://localhost:8443/uaa
+      url: http://localhost:8080/uaa
     pls:
       path: /pls/**
-      url: https://localhost:8443/pls
+      url: http://localhost:8080/pls
 c2s:
   edge-server:
     root-redirect-url: redirect:/pp-ui
@@ -119,12 +119,6 @@ eureka:
     health-check-url: https://${eureka.instance.hostname}/health
     home-page-url: https://${eureka.instance.hostname}/
 ---
-spring.profiles: eureka-ssl
-eureka:
-  client:
-    service-url:
-      defaultZone: https://localhost:8761/eureka/
----
 spring.profiles: docker
 server:
   port: 443
@@ -134,14 +128,17 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: https://discovery-server.c2s.com:8761/eureka/
+      defaultZone: ${eureka.client.protocol:http}://discovery-server.c2s.com:8761/eureka/
   instance:
     prefer-ip-address: true
 zuul:
   routes:
     uaa:
       path: /uaa/**
-      url: https://uaa.c2s.com:8443/uaa
+      url: http://uaa.c2s.com:8080/uaa
     pls:
       path: /pls/**
-      url: https://pls.c2s.com:8443/pls
+      url: http://pls.c2s.com:8080/pls
+    guvnor:
+      path: /guvnor-5.5.0.Final-tomcat-6.0/**
+      url: http://guvnor.c2s.com:8080/guvnor-5.5.0.Final-tomcat-6.0

@@ -1,5 +1,6 @@
-FROM java:8
+FROM bhits/java-jar-runner:8u102-jre
 VOLUME /java
 ARG finalName
-ADD $finalName /edge-server.jar
-ENTRYPOINT ["java","-Djavax.net.ssl.trustStore=/java/keystore/c2s.keystore","-Djavax.net.ssl.trustStorePassword=changeit","-jar","/edge-server.jar","--spring.profiles.active=ssl,eureka-ssl,docker"]
+ENV JAR_FILE $finalName
+COPY $finalName /
+ENV DEFAULT_PROGRAM_ARGS --spring.profiles.active=docker
