@@ -10,25 +10,38 @@
 
 	<name>Edge Server</name>
 	<description>Edge Server for C2S Applications</description>
+	<url>${project.scm.url}</url>
 
-	<scm>
-		<url>https://github.com/FEISystems/edge-server.git</url>
-		<connection>scm:git:https://github.com/FEISystems/edge-server.git</connection>
-		<developerConnection>scm:git:https://github.com/FEISystems/edge-server.git</developerConnection>
-	</scm>
+	<organization>
+		<name>SAMHSA</name>
+		<url>http://www.samhsa.gov/</url>
+	</organization>
 
 	<developers>
 		<developer>
-			<id>Bhits.Java</id>
-			<name>Bhits Java</name>
-			<email>Bhits.Java@feisystems.com</email>
+			<id>BHITS Team</id>
+			<name>BHITS Team</name>
 			<organization>FEi Systems</organization>
-			<roles>
-				<role>developer</role>
-			</roles>
-			<timezone>-5</timezone>
 		</developer>
 	</developers>
+
+	<licenses>
+		<license>
+			<name>See license in LICENSE.md</name>
+			<url>${project.scm.url}/blob/master/LICENSE.md</url>
+		</license>
+	</licenses>
+
+	<ciManagement>
+		<system>CI</system>
+		<url>http://BhitsBuild03/</url>
+	</ciManagement>
+
+	<scm>
+		<url>https://github.com/bhits/edge-server</url>
+		<connection>scm:git:${project.scm.url}.git</connection>
+		<developerConnection>scm:git:${project.scm.url}.git</developerConnection>
+	</scm>
 
 	<distributionManagement>
 		<repository>
@@ -57,6 +70,18 @@
 		<docker.maven.version>0.4.3</docker.maven.version>
 	</properties>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring.cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -75,27 +100,16 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>com.netflix.netflix-commons</groupId>
+			<artifactId>netflix-commons-util</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>com.netflix.netflix-commons</groupId>
-			<artifactId>netflix-commons-util</artifactId>
-		</dependency>
 	</dependencies>
-	
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring.cloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 	
 	<build>
 		<plugins>
