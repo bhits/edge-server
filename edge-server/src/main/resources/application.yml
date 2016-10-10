@@ -1,5 +1,21 @@
 server:
   port: 80
+# SSL is disabled by default for the Edge Server to make development environment setup easier.
+  # YOU MUST ENABLE SSL IN AN ACTUAL DEPLOYMENT ENVIRONMENT!
+  #
+  # To enable SSL for the Edge Server:
+  #   1) Activate the 'ssl' spring profile by passing in the following program argument:
+  #          a) --spring.profiles.active=ssl
+  #   2) Set the appropriate values for the 'server.ssl.key-store' and 'server.ssl.key-store-password' properties.
+  #          a) You can override/set these properties by setting them in an externalzied application.yml file.
+  #               EXAMPLE:
+  #                  server:
+  #                     ssl:
+  #                        key-store: /ssl_keystore.keystore
+  #                        key-store-password: changeit
+  #          b) Alternatively, you can pass the properties in using the following program arguments:
+  #                 i) --server.ssl.key-store=path-to-file/filename
+  #                ii) --server.ssl.key-store-password=your-keystore-password
 info:
   component: Edge Server
 eureka:
@@ -63,9 +79,13 @@ zuul:
       path: /uaa/**
       # Override Zuul default:
       sensitiveHeaders: Cookie,Set-Cookie
+      # UAA is not registered with the discovery server, so the endpoint must be explictly mapped to the URL
+      #    If you enable SSL for UAA, you must change the URL to 'https' and update the port for UAA below:
       url: http://localhost:8080/uaa
     pls:
       path: /pls/**
+      # PLS is not registered with the discovery server, so the endpoint must be explictly mapped to the URL
+      #    If you enable SSL for PLS, you must change the URL to 'https' and update the port for PLS below:
       url: http://localhost:8080/pls
 c2s:
   edge-server:
@@ -152,10 +172,16 @@ zuul:
   routes:
     uaa:
       path: /uaa/**
+      # UAA is not registered with the discovery server, so the endpoint must be explictly mapped to the URL
+      #    If you enable SSL for UAA, you must change the URL to 'https' and update the port for UAA below:
       url: http://uaa.c2s.com:8080/uaa
     pls:
       path: /pls/**
+      # PLS is not registered with the discovery server, so the endpoint must be explictly mapped to the URL
+      #    If you enable SSL for PLS, you must change the URL to 'https' and update the port for PLS below:
       url: http://pls.c2s.com:8080/pls
     guvnor:
       path: /guvnor-5.5.0.Final-tomcat-6.0/**
+      # Guvnor is not registered with the discovery server, so the endpoint must be explictly mapped to the URL
+      #    If you enable SSL for Guvnor, you must change the URL to 'https' and update the port for Guvnor below:
       url: http://guvnor.c2s.com:8080/guvnor-5.5.0.Final-tomcat-6.0
