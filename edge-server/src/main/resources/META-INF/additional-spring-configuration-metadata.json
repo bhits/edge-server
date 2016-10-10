@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "c2s.edge-server.root-redirect-url",
+      "type": "java.lang.String",
+      "description": "The path to redirect to when no path is specified in the URL."
+    }
+  ]
+}
