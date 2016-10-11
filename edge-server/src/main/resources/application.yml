@@ -122,19 +122,12 @@ security:
       enabled: true
       path: ${management.context-path}/**
 ---
+# If the ssl spring profile below is enabled, you must follow the instructions at
+# the top of this file to set the key-store and key-store-password properties as well.
 spring.profiles: ssl
 server:
   port: 443
   ssl:
-    # If ssl is enabled, you must set the property 'server.ssl.key-store' to the file path to the SSL keystore file.
-    # You can do this by passing in '--server.ssl.key-store=path-to-file/filename' as a program argument, or you can
-    # set the property in an externalzied application.yml file.
-    #
-    # You must also set the 'server.ssl.key-store-password' property to specify the password for the SSL keystore file.
-    #
-    # EXAMPLE:
-    # key-store: /ssl_keystore.keystore
-    # key-store-password: changeit
     ciphers: "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"
     enabledProtocols: "TLSv1.1,TLSv1.2"
 eureka:
