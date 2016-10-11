@@ -1,19 +1,19 @@
 # SSL is disabled by default for the Edge Server to make development environment setup easier.
-  # YOU MUST ENABLE SSL IN AN ACTUAL DEPLOYMENT ENVIRONMENT!
-  #
-  # To enable SSL for the Edge Server:
-  #   1) Activate the 'ssl' spring profile by passing in the following program argument:
-  #          a) --spring.profiles.active=ssl
-  #   2) Set the appropriate values for the 'server.ssl.key-store' and 'server.ssl.key-store-password' properties.
-  #          a) You can override/set these properties by setting them in an externalzied application.yml file.
-  #               EXAMPLE:
-  #                  server:
-  #                     ssl:
-  #                        key-store: /ssl_keystore.keystore
-  #                        key-store-password: changeit
-  #          b) Alternatively, you can pass the properties in using the following program arguments:
-  #                 i) --server.ssl.key-store=path-to-file/filename
-  #                ii) --server.ssl.key-store-password=your-keystore-password
+# YOU MUST ENABLE SSL IN AN ACTUAL DEPLOYMENT ENVIRONMENT!
+#
+# To enable SSL for the Edge Server:
+#   1) Activate the 'ssl' spring profile by passing in the following program argument:
+#          a) --spring.profiles.active=ssl
+#   2) Set the appropriate values for the 'server.ssl.key-store' and 'server.ssl.key-store-password' properties.
+#          a) You can override/set these properties by setting them in an externalzied application.yml file.
+#               EXAMPLE:
+#                  server:
+#                     ssl:
+#                        key-store: /ssl_keystore.keystore
+#                        key-store-password: changeit
+#          b) Alternatively, you can pass the properties in using the following program arguments:
+#                 i) --server.ssl.key-store=path-to-file/filename
+#                ii) --server.ssl.key-store-password=your-keystore-password
 info:
   component: Edge Server
 server:
