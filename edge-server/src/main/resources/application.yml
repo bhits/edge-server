@@ -105,9 +105,6 @@ management:
     sessions: never
   context-path: /management
 security:
-  basic:
-    enabled: true
-    path: ${management.context-path}/**
   require-ssl: true
   user:
     name: admin
@@ -121,6 +118,9 @@ security:
     # EXAMPLE:
     # password: changeit
   sessions: never
+  basic:
+      enabled: true
+      path: ${management.context-path}/**
 ---
 spring.profiles: ssl
 server:
