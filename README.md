@@ -1,6 +1,6 @@
 # Edge Server API
 
-Edge Server is the gatekeeper of C2s to the outside world. Keeping the unauthorized external requests from passing through, also servers as entry point to our microservices landscape. Technically, it uses *[SpringCloud Zuul](https://spring.io/guides/gs/routing-and-filtering/)* as routing framework with *[SpringCloud Ribbon](https://spring.io/guides/gs/client-side-load-balancing/)* as underlying load balancer
+Edge Server acts as a gatekeeper to the outside world, keeping the unauthorized external requests from passing through. It uses *[Spring Cloud Zuul](https://spring.io/guides/gs/routing-and-filtering/)* as routing framework, which serves as an entry point to our Consent2Share (C2S) microservices landscape. Zuul uses *[Spring Cloud Ribbon](https://spring.io/guides/gs/client-side-load-balancing/)* to lookup available services and routes the external request to an appropriate service instance, facilitating Dynamic Routing and Load Balancing.
 
 ## Build
 
