@@ -143,18 +143,6 @@ eureka:
     home-page-url: https://${eureka.instance.hostname}/
 ---
 spring.profiles: docker
-server:
-  port: 443
-  ssl:
-    # If ssl is enabled, you must set the property 'server.ssl.key-store' to the file path to the SSL keystore file.
-    # You can do this by passing in '--server.ssl.key-store=path-to-file/filename' as a program argument, or you can
-    # set the property in an externalzied application.yml file.
-    #
-    # You must also set the 'server.ssl.key-store-password' property to specify the password for the SSL keystore file.
-    #
-    # EXAMPLE:
-    # key-store: /java/keystore/c2s.keystore
-    # key-store-password: changeit
 eureka:
   client:
     service-url:
@@ -178,3 +166,6 @@ zuul:
       # Guvnor is not registered with the discovery server, so the endpoint must be explictly mapped to the URL
       #    If you enable SSL for Guvnor, you must change the URL to 'https' and update the port for Guvnor below:
       url: http://guvnor.c2s.com:8080/guvnor-5.5.0.Final-tomcat-6.0
+    openempi:
+      path: /openempi-admin/**
+      url: http://openempi.c2s.com:8080/openempi-admin
