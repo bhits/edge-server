@@ -1,6 +1,6 @@
 # Edge Server API
 
-Edge Server acts as a gatekeeper to the outside world, keeping the unauthorized external requests from passing through. It uses *[Spring Cloud Zuul](https://spring.io/guides/gs/routing-and-filtering/)* as routing framework, which serves as an entry point to our Consent2Share (C2S) microservices landscape. Zuul uses *[Spring Cloud Ribbon](https://spring.io/guides/gs/client-side-load-balancing/)* to lookup available services and routes the external request to an appropriate service instance, facilitating Dynamic Routing and Load Balancing.
+The Edge Server acts as a gatekeeper to the outside world. It keeps unauthorized external requests from passing through. It uses *[Spring Cloud Zuul](https://spring.io/guides/gs/routing-and-filtering/)* as a routing framework, which serves as an entry point to the Consent2Share (C2S) microservices landscape. Zuul uses *[Spring Cloud Ribbon](https://spring.io/guides/gs/client-side-load-balancing/)* to lookup available services, and routes the external request to an appropriate service instance, facilitating Dynamic Routing and Load Balancing.
 
 ## Build
 
@@ -26,15 +26,15 @@ To build the project, navigate to the folder (./edge-server/edge-server) which c
 
 ### Commands
 
-This is a [Spring Boot](https://projects.spring.io/spring-boot/) project and serves the API via an embedded Tomcat instance, therefore there is no need for a separate application server to run this service.
+This is a [Spring Boot](https://projects.spring.io/spring-boot/) project and it serves the API via an embedded Tomcat instance. Therefore, there is no need for a separate application server to run this service.
 + Run as a JAR file: `java -jar edge-server-x.x.x-SNAPSHOT.jar <additional program arguments>`
 + Run as a Docker Container: `docker run -d bhits/edge-server:latest <additional program arguments>`
 
-*NOTE: In order for this API to fully function as a microservice in C2S Application, it is also required to setup the dependency microservices and support level infrastructure. Please refer to the C2S Deployment Guide for instructions to setup the C2S infrastructure.*
+*NOTE: In order for this API to fully function as a microservice in the C2S application, it is required to setup the dependency microservices and support level infrastructure. Please refer to the C2S Deployment Guide for instructions to setup the C2S infrastructure.*
 
 ## Configure
 
-This API runs with some default configuration that is primarily targeted for development environment. However, [Spring Boot](https://projects.spring.io/spring-boot/) supports several methods to override the default configuration to configure the API for a certain deployment environment.
+This API runs with a default configuration that is primarily targeted for the development environment. However, [Spring Boot](https://projects.spring.io/spring-boot/) supports several methods to override the default configuration to configure the API for a certain deployment environment.
 
 Please see the [default configuration](edge-server/src/main/resources/application.yml) for this API as a guidance and override the specific configuration per environment as needed. Also, please refer to [Spring Boot Externalized Configuration](http://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html) documentation to see how Spring Boot applies the order to load the properties and [Spring Boot Common Properties](http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html) documentation to see the common properties used by Spring Boot.
 
