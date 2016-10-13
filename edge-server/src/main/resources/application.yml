@@ -120,11 +120,6 @@ eureka:
     home-page-url: https://${eureka.instance.hostname}/
 ---
 spring.profiles: docker
-server:
-  port: 443
-  ssl:
-    key-store: /java/keystore/c2s.keystore
-    key-store-password: changeit
 eureka:
   client:
     service-url:
@@ -142,3 +137,6 @@ zuul:
     guvnor:
       path: /guvnor-5.5.0.Final-tomcat-6.0/**
       url: http://guvnor.c2s.com:8080/guvnor-5.5.0.Final-tomcat-6.0
+    openempi:
+      path: /openempi-admin/**
+      url: http://openempi.c2s.com:8080/openempi-admin
