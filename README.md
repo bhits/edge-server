@@ -42,11 +42,11 @@ Please see the [default configuration](edge-server/src/main/resources/applicatio
 
 #### Override a Configuration Using Program Arguments While Running as a JAR:
 
-+ `java -jar edge-server-x.x.x-SNAPSHOT.jar --server.port=80 --spring.datasource.password=strongpassword`
++ `java -jar edge-server-x.x.x-SNAPSHOT.jar --server.port=80 --logging.file=/logs/edge-server.log`
 
 #### Override a Configuration Using Program Arguments While Running as a Docker Container:
 
-+ `docker run -d bhits/edge-server:latest --server.port=80 --spring.datasource.password=strongpassword`
++ `docker run -d bhits/edge-server:latest --server.port=80 --logging.file=/logs/edge-server.log`
 
 + In a `docker-compose.yml`, this can be provided as:
 ```yml
@@ -55,7 +55,7 @@ services:
 ...
   edge-server.c2s.com:
     image: "bhits/edge-server:latest"
-    command: ["--server.port=80","--spring.datasource.password=strongpassword"]
+    command: ["--server.port=80","--logging.file=/logs/edge-server.log"]
 ...
 ```
 *NOTE: Please note that these additional arguments will be appended to the default `ENTRYPOINT` specified in the `Dockerfile` unless the `ENTRYPOINT` is overridden.*
@@ -91,6 +91,10 @@ services:
 Java has a default CA Certificates Store that allows it to trust well-known certificate authorities. For development and testing purposes, one might want to trust additional self-signed certificates. In order to override the default Java CA Certificates Store in a Docker container, one can mount a custom `cacerts` file over the default one in the Docker image as `docker run -d -v "/path/on/dockerhost/to/custom/cacerts:/etc/ssl/certs/java/cacerts" bhits/edge-server:latest`
 
 *NOTE: The `cacerts` references given in the both sides of volume mapping above are files, not directories.*
+
+### Routing
+
+By default, Edge Server (Zuul) exposes all the service endpoints that are registered at Discovery Server (Eureka). As it can be seen in the [default configuration](edge-server/src/main/resources/application.yml), `zuul.ignoredServices='*'` property prevents this behavior by ignoring all services for routing. The following `zuul.routes` configuration explicitly defines the routes for each service that is supposed to be exposed by the Edge Server. The security is delegated to the resource servers that are exposed by the Edge Server, therefore **one should exercise great caution when configuring the routes to the microservices. The endpoints that contain sensitive information and do not implement a form of security MUST NOT BE exposed through Edge Server.**
 
 [//]: # (## API Documentation)
 
