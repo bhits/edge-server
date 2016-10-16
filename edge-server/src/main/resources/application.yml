@@ -18,8 +18,10 @@ info:
   component: Edge Server
 server:
   port: 80
-# TODO: until finding a better solution, disable hystrix command timeout in edge server. See https://github.com/spring-cloud/spring-cloud-netflix/issues/321#issuecomment-97727313
-hystrix.command.default.execution.timeout.enabled: false
+logging:
+  file: /java/C2S_LOGS/edge-server/edgeServer.log
+  level:
+    org.springframework.cloud.netflix: info
 ribbon:
   ReadTimeout: 50000
 eureka:
@@ -36,6 +38,35 @@ eureka:
     service-url:
       # endpoint for discovery-server, pass '--eureka.client.protocol=https' if discovery-server is running on https
       defaultZone: ${eureka.client.protocol:http}://localhost:8761/eureka/
+response:
+  header:
+    key: WWW-Authenticate
+    value: Application driven
+# secure management endpoints
+management:
+  security:
+    enabled: true
+    sessions: never
+  context-path: /management
+security:
+  require-ssl: true
+  user:
+    name: admin
+    # You can set the property '--security.user.password' to a password of your choice for the managment interface,
+    # or can you leave the password property unspecified, in which case Spring Secuirty will generate a random one each
+    # time it starts up, and it will output it to the log when it boots.
+    #
+    # NOTE: SSL must be enabled in order to use the management interface. Accessing this management interface is not
+    # necessary to run C2S.
+    #
+    # EXAMPLE:
+    # password: changeit
+  sessions: never
+  basic:
+      enabled: true
+      path: ${management.context-path}/**
+# TODO: until finding a better solution, disable hystrix command timeout in edge server. See https://github.com/spring-cloud/spring-cloud-netflix/issues/321#issuecomment-97727313
+hystrix.command.default.execution.timeout.enabled: false
 zuul:
   ignoredServices: '*'
   routes:
@@ -90,37 +121,6 @@ zuul:
 c2s:
   edge-server:
     root-redirect-url: redirect:/pp-ui
-logging:
-  file: /java/C2S_LOGS/edge-server/edgeServer.log
-  level:
-    org.springframework.cloud.netflix: info
-response:
-  header:
-    key: WWW-Authenticate
-    value: Application driven
-# secure management endpoints
-management:
-  security:
-    enabled: true
-    sessions: never
-  context-path: /management
-security:
-  require-ssl: true
-  user:
-    name: admin
-    # You can set the property '--security.user.password' to a password of your choice for the managment interface,
-    # or can you leave the password property unspecified, in which case Spring Secuirty will generate a random one each
-    # time it starts up, and it will output it to the log when it boots.
-    #
-    # NOTE: SSL must be enabled in order to use the management interface. Accessing this management interface is not
-    # necessary to run C2S.
-    #
-    # EXAMPLE:
-    # password: changeit
-  sessions: never
-  basic:
-      enabled: true
-      path: ${management.context-path}/**
 ---
 # If the ssl spring profile below is enabled, you must follow the instructions at
 # the top of this file to set the key-store and key-store-password properties as well.
