@@ -5,7 +5,7 @@
 
 	<groupId>gov.samhsa.c2s</groupId>
 	<artifactId>edge-server</artifactId>
-	<version>0.9.0-SNAPSHOT</version>
+	<version>0.10.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Edge Server</name>
@@ -30,6 +30,8 @@
 		</developer>
 	</developers>
 
+	<!-- Comment out the below distributionManagement if you couldn't connect to FEi Nexus repository manager to upload dependencies when you run 'mvn deploy' command -->
+
 	<distributionManagement>
 		<repository>
 			<id>deployment</id>
@@ -46,7 +48,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.4.0.RC1</version>
+		<version>1.4.0.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
