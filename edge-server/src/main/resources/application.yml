@@ -1,11 +1,32 @@
-server:
-  port: 80
+# SSL is disabled by default for the Edge Server to make development environment setup easier.
+# YOU MUST ENABLE SSL IN AN ACTUAL DEPLOYMENT ENVIRONMENT!
+#
+# To enable SSL for the Edge Server:
+#   1) Activate the 'ssl' spring profile by passing in the following program argument:
+#          a) --spring.profiles.active=ssl
+#   2) Set the appropriate values for the 'server.ssl.key-store' and 'server.ssl.key-store-password' properties.
+#          a) You can override/set these properties by setting them in an externalzied application.yml file.
+#               EXAMPLE:
+#                  server:
+#                     ssl:
+#                        key-store: /ssl_keystore.keystore
+#                        key-store-password: changeit
+#          b) Alternatively, you can pass the properties in using the following program arguments:
+#                 i) --server.ssl.key-store=path-to-file/filename
+#                ii) --server.ssl.key-store-password=your-keystore-password
 info:
   component: Edge Server
+server:
+  port: 80
+logging:
+  file: /java/C2S_LOGS/edge-server/edgeServer.log
+  level:
+    org.springframework.cloud.netflix: info
+ribbon:
+  ReadTimeout: 50000
 eureka:
   instance:
     instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${random.value}}
-#    prefer-ip-address: true
     hostname: localhost
     secure-port: ${server.port}
     non-secure-port: ${server.port}
@@ -17,11 +38,35 @@ eureka:
     service-url:
       # endpoint for discovery-server, pass '--eureka.client.protocol=https' if discovery-server is running on https
       defaultZone: ${eureka.client.protocol:http}://localhost:8761/eureka/
-#    initial-instance-info-replication-interval-seconds: 3
+response:
+  header:
+    key: WWW-Authenticate
+    value: Application driven
+# secure management endpoints
+management:
+  security:
+    enabled: true
+    sessions: never
+  context-path: /management
+security:
+  require-ssl: true
+  user:
+    name: admin
+    # You can set the property '--security.user.password' to a password of your choice for the managment interface,
+    # or can you leave the password property unspecified, in which case Spring Secuirty will generate a random one each
+    # time it starts up, and it will output it to the log when it boots.
+    #
+    # NOTE: SSL must be enabled in order to use the management interface. Accessing this management interface is not
+    # necessary to run C2S.
+    #
+    # EXAMPLE:
+    # password: changeit
+  sessions: never
+  basic:
+      enabled: true
+      path: ${management.context-path}/**
 # TODO: until finding a better solution, disable hystrix command timeout in edge server. See https://github.com/spring-cloud/spring-cloud-netflix/issues/321#issuecomment-97727313
 hystrix.command.default.execution.timeout.enabled: false
-ribbon:
-  ReadTimeout: 50000
 zuul:
   ignoredServices: '*'
   routes:
@@ -65,56 +110,34 @@ zuul:
       path: /uaa/**
       # Override Zuul default:
       sensitiveHeaders: Cookie,Set-Cookie
+      # UAA is not registered with the discovery server, so the endpoint must be explictly mapped to the URL
+      #    If you enable SSL for UAA, you must change the URL to 'https' and update the port for UAA below:
       url: http://localhost:8080/uaa
     pls:
       path: /pls/**
+      # PLS is not registered with the discovery server, so the endpoint must be explictly mapped to the URL
+      #    If you enable SSL for PLS, you must change the URL to 'https' and update the port for PLS below:
       url: http://localhost:8080/pls
 c2s:
   edge-server:
     root-redirect-url: redirect:/pp-ui
-logging:
-  file: /java/C2S_LOGS/edge-server/edgeServer.log
-  level:
-    org.springframework.cloud.netflix: info
-response:
-  header:
-    key: WWW-Authenticate
-    value: Application driven
-# secure management endpoints
-management:
-  security:
-    enabled: true
-    sessions: never
-  context-path: /management
-security:
-  basic:
-    enabled: true
-    path: ${management.context-path}/**
-  user:
-    name: admin
-    password: changeit
-  require-ssl: true
-  sessions: never
 ---
+# If the ssl spring profile below is enabled, you must follow the instructions at
+# the top of this file to set the key-store and key-store-password properties as well.
 spring.profiles: ssl
 server:
   port: 443
   ssl:
-    key-store: /ssl_keystore.keystore
-    key-store-password: changeit
-    ciphers: "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA"
+    ciphers: "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"
     enabledProtocols: "TLSv1.1,TLSv1.2"
 eureka:
   instance:
     instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${random.value}}
-#    prefer-ip-address: true
     hostname: localhost
     secure-port: ${server.port}
     non-secure-port: 80
     secure-port-enabled: true
     non-secure-port-enabled: false
-#    lease-renewal-interval-in-seconds: 30
-#    lease-expiration-duration-in-seconds: 3
     status-page-url: https://${eureka.instance.hostname}/info
     health-check-url: https://${eureka.instance.hostname}/health
     home-page-url: https://${eureka.instance.hostname}/
@@ -130,12 +153,18 @@ zuul:
   routes:
     uaa:
       path: /uaa/**
+      # UAA is not registered with the discovery server, so the endpoint must be explictly mapped to the URL
+      #    If you enable SSL for UAA, you must change the URL to 'https' and update the port for UAA below:
       url: http://uaa.c2s.com:8080/uaa
     pls:
       path: /pls/**
+      # PLS is not registered with the discovery server, so the endpoint must be explictly mapped to the URL
+      #    If you enable SSL for PLS, you must change the URL to 'https' and update the port for PLS below:
       url: http://pls.c2s.com:8080/pls
     guvnor:
       path: /guvnor-5.5.0.Final-tomcat-6.0/**
+      # Guvnor is not registered with the discovery server, so the endpoint must be explictly mapped to the URL
+      #    If you enable SSL for Guvnor, you must change the URL to 'https' and update the port for Guvnor below:
       url: http://guvnor.c2s.com:8080/guvnor-5.5.0.Final-tomcat-6.0
     openempi:
       path: /openempi-admin/**
