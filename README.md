@@ -94,7 +94,7 @@ Java has a default CA Certificates Store that allows it to trust well-known cert
 
 ### Routing
 
-By default, Edge Server (Zuul) exposes all the service endpoints that are registered at Discovery Server (Eureka). As it can be seen in the [default configuration](edge-server/src/main/resources/application.yml), `zuul.ignoredServices='*'` property prevents this behavior by ignoring all services for routing. The following `zuul.routes` configuration explicitly defines the routes for each service that is supposed to be exposed by the Edge Server. The security is delegated to the resource servers that are exposed by the Edge Server, therefore **one should exercise great caution when configuring the routes to the microservices. The endpoints that contain sensitive information and do not implement a form of security MUST NOT BE exposed through Edge Server.**
+By default, the Edge Server (Zuul) exposes all the service endpoints that are registered at the Discovery Server (Eureka). As can be seen in the [default configuration](edge-server/src/main/resources/application.yml), `zuul.ignoredServices='*'` property prevents this behavior by ignoring all services for routing. The following `zuul.routes` configuration explicitly defines the routes for each service that are supposed to be exposed by the Edge Server. The security is delegated to the resource servers that are exposed by the Edge Server. Therefore, **one should exercise great caution when configuring the routes to the microservices. The endpoints that contain sensitive information and do not implement a form of security MUST NOT BE exposed through the Edge Server.**
 
 [//]: # (## API Documentation)
 
