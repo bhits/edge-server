@@ -34,7 +34,6 @@ public class WebConfig {
                 context.addConstraint(securityConstraint);
             }
         };
-
         tomcat.addAdditionalTomcatConnectors(initiateHttpConnector());
         return tomcat;
     }
@@ -45,7 +44,6 @@ public class WebConfig {
         connector.setPort(nonSecurePort);
         connector.setSecure(false);
         connector.setRedirectPort(redirectPort);
-
         return connector;
     }
 }
