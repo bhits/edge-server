@@ -20,8 +20,6 @@ server:
   port: 80
 logging:
   file: /java/C2S_LOGS/edge-server/edgeServer.log
-  level:
-    org.springframework.cloud.netflix: info
 ribbon:
   ReadTimeout: 50000
 eureka:
@@ -162,10 +160,10 @@ zuul:
       #    If you enable SSL for PLS, you must change the URL to 'https' and update the port for PLS below:
       url: http://pls.c2s.com:8080/pls
     guvnor:
-      path: /guvnor-5.5.0.Final-tomcat-6.0/**
+      path: /guvnor/**
       # Guvnor is not registered with the discovery server, so the endpoint must be explictly mapped to the URL
       #    If you enable SSL for Guvnor, you must change the URL to 'https' and update the port for Guvnor below:
-      url: http://guvnor.c2s.com:8080/guvnor-5.5.0.Final-tomcat-6.0
+      url: http://guvnor.c2s.com:8080/guvnor
     openempi:
       path: /openempi-admin/**
       url: http://openempi.c2s.com:8080/openempi-admin

@@ -27,7 +27,7 @@ public class EdgeServerApplication {
     }
 
     @Bean
-    public BasicAuthenticationEntryPointFilter basicAuthenticationEntryPointFilter(){
-        return  new BasicAuthenticationEntryPointFilter();
+    public BasicAuthenticationEntryPointFilter basicAuthenticationEntryPointFilter() {
+        return new BasicAuthenticationEntryPointFilter();
     }
 }
