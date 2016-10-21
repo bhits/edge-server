@@ -126,6 +126,8 @@ spring.profiles: ssl
 server:
   port: 443
   ssl:
+#    key-store: /java/keystore/edge-server.keystore
+#    key-store-password: changeit
     ciphers: "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"
     enabledProtocols: "TLSv1.1,TLSv1.2"
 eureka:
@@ -160,10 +162,10 @@ zuul:
       #    If you enable SSL for PLS, you must change the URL to 'https' and update the port for PLS below:
       url: http://pls.c2s.com:8080/pls
     guvnor:
-      path: /guvnor-5.5.0.Final-tomcat-6.0/**
+      path: /guvnor/**
       # Guvnor is not registered with the discovery server, so the endpoint must be explictly mapped to the URL
       #    If you enable SSL for Guvnor, you must change the URL to 'https' and update the port for Guvnor below:
-      url: http://guvnor.c2s.com:8080/guvnor-5.5.0.Final-tomcat-6.0
+      url: http://guvnor.c2s.com:8080/guvnor
     openempi:
       path: /openempi-admin/**
       url: http://openempi.c2s.com:8080/openempi-admin
