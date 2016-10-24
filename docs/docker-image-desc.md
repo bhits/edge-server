@@ -5,7 +5,7 @@ Edge Server acts as a gatekeeper preventing unauthorized external requests from 
 
 # Supported Tags and Respective `Dockerfile` Links
 
-[`1.16.0`](https://github.com/bhits/edge-server/blob/master/edge-server/src/main/docker/Dockerfile),[`latest`](https://github.com/bhits/edge-server/blob/master/edge-server/src/main/docker/Dockerfile)[(1.16.0/Dockerfile)](https://github.com/bhits/edge-server/blob/master/edge-server/src/main/docker/Dockerfile)
+[`0.11.0`](https://github.com/bhits/edge-server/blob/master/edge-server/src/main/docker/Dockerfile),[`latest`](https://github.com/bhits/edge-server/blob/master/edge-server/src/main/docker/Dockerfile)[(0.11.0/Dockerfile)](https://github.com/bhits/edge-server/blob/master/edge-server/src/main/docker/Dockerfile)
 
 For more information about this image, the source code, and its history, please see the [GitHub repository](https://github.com/bhits/edge-server).
 
