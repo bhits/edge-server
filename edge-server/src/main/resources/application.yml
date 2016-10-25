@@ -169,3 +169,5 @@ zuul:
     openempi:
       path: /openempi-admin/**
       url: http://openempi.c2s.com:8080/openempi-admin
+      # Override Zuul default:
+      sensitiveHeaders: ''
