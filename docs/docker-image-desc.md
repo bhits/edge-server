@@ -23,12 +23,12 @@ Be sure to familiarize yourself with the repository's [README.md](https://github
 
 `docker run  --name edge-server -d bhits/edge-server:latest <additional program arguments>`
 
-*NOTE: In order for this API to fully function as a microservice in the Consent2Share application, it is required to setup the dependency microservices and support level infrastructure. Please refer to the [Consent2Share Deployment Guide](https://github.com/bhits/consent2share/releases/download/2.0.0/c2s-deployment-guide.pdf) for instructions to setup the Consent2Share infrastructure.*
+*NOTE: In order for the Edge Server to fully function as a microservice in the Consent2Share application, it is required to setup the dependency microservices and support level infrastructure. Please refer to the [Consent2Share Deployment Guide](https://github.com/bhits/consent2share/releases/download/2.0.0/c2s-deployment-guide.pdf) for instructions to setup the Consent2Share infrastructure.*
 
 
 ## Configure
 
-This API runs with a [default configuration](https://github.com/bhits/edge-server/blob/master/edge-server/src/main/resources/application.yml) that is primarily targeted for the development environment.  The Spring profile `docker` is actived by default when building images. [Spring Boot](https://projects.spring.io/spring-boot/) supports several methods to override the default configuration to configure the API for a certain deployment environment. 
+The Edge Server runs with a [default configuration](https://github.com/bhits/edge-server/blob/master/edge-server/src/main/resources/application.yml) that is primarily targeted for the development environment.  The Spring profile `docker` is actived by default when building images. [Spring Boot](https://projects.spring.io/spring-boot/) supports several methods to override the default configuration to configure the Edge Server for a certain deployment environment. 
 
 Here is example to override default database password:
 
