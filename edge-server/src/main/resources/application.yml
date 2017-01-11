@@ -20,10 +20,6 @@ logging:
   file: /java/C2S_LOGS/edge-server/edgeServer.log
 ribbon:
   ReadTimeout: 50000
-eureka:
-  client:
-    healthcheck:
-      enabled: true
 response:
   header:
     key: WWW-Authenticate
