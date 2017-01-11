@@ -1,3 +1,56 @@
 spring:
   application:
     name: edge-server
+  profiles:
+    active: dev
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config-server
+      fail-fast: true
+      retry:
+        initial-interval: 2000
+        max-attempts: 20
+        multiplier: 2
+        max-interval: 20000
+server:
+  port: 80
+---
+spring.profiles: dev
+spring:
+  profiles:
+    include: eureka-instance,eureka-client
+---
+spring.profiles: eureka-instance
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${random.value}}
+    secure-port-enabled: false
+    non-secure-port-enabled: true
+    non-secure-port: ${server.port}
+---
+spring.profiles: eureka-client
+eureka:
+  client:
+    service-url:
+      # endpoint for discovery-server, pass '--eureka.client.protocol=https' if discovery-server is running on https
+      defaultZone: ${eureka.client.protocol:http}://localhost:8761/eureka/
+---
+spring.profiles: ssl
+server:
+  port: 443
+  ssl:
+    key-store: /ssl_keystore.keystore
+    key-store-password: changeit
+---
+spring.profiles: docker
+spring:
+  profiles:
+    include: eureka-instance,eureka-client,ssl
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: https://discovery-server.c2s.com:8761/eureka/
