@@ -2,7 +2,7 @@ spring:
   application:
     name: edge-server
   profiles:
-    active: enable-config-server,dev
+    active: application-default
 server:
   port: 80
 # Configure a symmetric key to use for Encryption and Decryption
@@ -10,7 +10,12 @@ server:
 encrypt:
   key: changeit
 ---
-spring.profiles: enable-config-server
+spring.profiles: application-default
+spring:
+  profiles:
+    include: config-client,eureka-instance,eureka-client
+---
+spring.profiles: config-client
 spring:
   cloud:
     config:
@@ -23,11 +28,6 @@ spring:
         max-attempts: 20
         multiplier: 2
         max-interval: 20000
----
-spring.profiles: dev
-spring:
-  profiles:
-    include: eureka-instance,eureka-client
 ---
 spring.profiles: eureka-instance
 eureka:
@@ -44,13 +44,6 @@ eureka:
       # endpoint for discovery-server, pass '--eureka.client.protocol=https' if discovery-server is running on https
       defaultZone: ${eureka.client.protocol:http}://localhost:8761/eureka/
 ---
-spring.profiles: ssl
-server:
-  port: 443
-  ssl:
-    key-store: /ssl_keystore.keystore
-    key-store-password: changeit
----
 spring.profiles: docker
 spring:
   profiles:
@@ -60,4 +53,4 @@ eureka:
     prefer-ip-address: true
   client:
     service-url:
-      defaultZone: https://discovery-server.c2s.com:8761/eureka/
+      defaultZone: ${eureka.client.protocol:http}://discovery-server.c2s.com:8761/eureka/

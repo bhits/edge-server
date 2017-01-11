@@ -81,13 +81,16 @@ c2s:
   edge-server:
     root-redirect-url: redirect:/pp-ui
 ---
+# If the ssl spring profile below is enabled, you must follow the instructions at
+# the top of this file to set the key-store and key-store-password properties as well.
+spring.profiles: ssl
+server:
+  port: 443
+  ssl:
+    key-store: /ssl_keystore.keystore
+    key-store-password: changeit
+---
 spring.profiles: docker
-eureka:
-  client:
-    service-url:
-      defaultZone: ${eureka.client.protocol:http}://discovery-server.c2s.com:8761/eureka/
-  instance:
-    prefer-ip-address: true
 zuul:
   routes:
     uaa:
