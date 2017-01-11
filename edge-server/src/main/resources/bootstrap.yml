@@ -2,7 +2,16 @@ spring:
   application:
     name: edge-server
   profiles:
-    active: dev
+    active: enable-config-server,dev
+server:
+  port: 80
+# Configure a symmetric key to use for Encryption and Decryption
+# Please change THE FOLLOWING DEFAULT KEY OUTSIDE OF DEVELOPMENT ENVIRONMENTS!
+encrypt:
+  key: changeit
+---
+spring.profiles: enable-config-server
+spring:
   cloud:
     config:
       discovery:
@@ -14,8 +23,6 @@ spring:
         max-attempts: 20
         multiplier: 2
         max-interval: 20000
-server:
-  port: 80
 ---
 spring.profiles: dev
 spring:
