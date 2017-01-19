@@ -74,9 +74,8 @@ zuul:
       url: http://localhost:8080/uaa
     pls:
       path: /pls/**
-      # PLS is not registered with the discovery server, so the endpoint must be explictly mapped to the URL
-      #    If you enable SSL for PLS, you must change the URL to 'https' and update the port for PLS below:
-      url: http://localhost:8080/pls
+      # Override Zuul default:
+      sensitiveHeaders: Cookie,Set-Cookie
 c2s:
   edge-server:
     root-redirect-url: redirect:/pp-ui
