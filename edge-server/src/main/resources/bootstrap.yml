@@ -47,7 +47,7 @@ eureka:
 spring.profiles: docker
 spring:
   profiles:
-    include: config-client,eureka-instance,ssl
+    include: ssl
 eureka:
   instance:
     prefer-ip-address: true
