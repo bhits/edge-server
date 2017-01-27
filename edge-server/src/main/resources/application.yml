@@ -24,6 +24,23 @@ response:
   header:
     key: WWW-Authenticate
     value: Application driven
+# secure management endpoints
+management:
+  security:
+    enabled: true
+    sessions: stateless
+    role: ADMIN
+    # forward compatibility
+    roles: ${management.security.role}
+security:
+  basic:
+    enabled: true
+    path: ${management.context-path}/**
+  user:
+    name: admin
+    password: changeit
+    role: ${management.security.role}
+  sessions: ${management.security.sessions}
 # TODO: until finding a better solution, disable hystrix command timeout in edge server. See https://github.com/spring-cloud/spring-cloud-netflix/issues/321#issuecomment-97727313
 hystrix.command.default.execution.timeout.enabled: false
 zuul:
