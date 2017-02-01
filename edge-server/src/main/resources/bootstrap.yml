@@ -3,8 +3,6 @@ spring:
     name: edge-server
   profiles:
     active: application-default
-server:
-  port: 80
 # Configure a symmetric key to use for Encryption and Decryption
 # Please change THE FOLLOWING DEFAULT KEY OUTSIDE OF DEVELOPMENT ENVIRONMENTS!
 encrypt:
@@ -35,7 +33,6 @@ eureka:
     instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${random.value}}
     secure-port-enabled: false
     non-secure-port-enabled: true
-    non-secure-port: ${server.port}
 ---
 spring.profiles: eureka-client
 eureka:
