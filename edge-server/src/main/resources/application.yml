@@ -100,6 +100,11 @@ zuul:
 c2s:
   edge-server:
     root-redirect-url: redirect:/pp-ui
+server:
+  port: 80
+eureka:
+  instance:
+    non-secure-port: 80
 ---
 spring.profiles: docker
 zuul:
