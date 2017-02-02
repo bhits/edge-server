@@ -93,8 +93,8 @@ zuul:
       path: /pls/**
       # Override Zuul default:
       sensitiveHeaders: Cookie,Set-Cookie
-    config-server:
-      path: /configServer/**
+    context-handler:
+      path: /contextHandler/**
       # Override Zuul default:
       sensitiveHeaders: Cookie,Set-Cookie
 c2s:
