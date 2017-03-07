@@ -58,8 +58,6 @@ zuul:
       path: /pp-ui/**
     admin-ui:
       path: /admin-ui/**
-    c2s-ui:
-      path: /c2s-ui/**
     pep:
       path: /pep/**
       # Override Zuul default:
@@ -101,7 +99,7 @@ zuul:
       sensitiveHeaders: Cookie,Set-Cookie
 c2s:
   edge-server:
-    root-redirect-url: redirect:/c2s-ui
+    root-redirect-url: redirect:/pp-ui
 server:
   port: 80
 eureka:
