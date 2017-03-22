@@ -5,7 +5,7 @@ Edge Server acts as a gatekeeper preventing unauthorized external requests from 
 
 # Supported Source Code Tags and Current `Dockerfile` Link
 
-[`0.14.0 (latest)`](https://github.com/bhits/edge-server/releases/tag/0.14.0), [`0.11.0`](https://github.com/bhits/edge-server/releases/tag/0.11.0)
+[`0.15.0 (latest)`](https://github.com/bhits/edge-server/releases/tag/0.15.0)
 
 [`Current Dockerfile`](https://github.com/bhits/edge-server/blob/master/edge-server/src/main/docker/Dockerfile)
 
@@ -16,8 +16,8 @@ For more information about this image, the source code, and its history, please 
 The Edge Server acts as a gatekeeper to the outside world. It keeps unauthorized external requests from passing through. It uses [Spring Cloud Zuul](https://spring.io/guides/gs/routing-and-filtering/) as a routing framework, which serves as an entry point to the Consent2Share (C2S) microservices landscape. Zuul uses [Spring Cloud Ribbon](https://spring.io/guides/gs/client-side-load-balancing/) to lookup available services, and routes the external request to an appropriate service instance, facilitating Dynamic Routing and Load Balancing.
 
 For more information and related downloads for Consent2Share, please visit [Consent2Share](https://bhits.github.io/consent2share/).
-# How to use this image
 
+# How to use this image
 
 ## Start a Edge Server instance
 
@@ -66,7 +66,7 @@ This environment variable is used to setup an application argument. The default 
 
 # Supported Docker versions
 
-This image is officially supported on Docker version 1.12.1.
+This image is officially supported on Docker version 1.13.0.
 
 Support for older versions (down to 1.6) is provided on a best-effort basis.
 
