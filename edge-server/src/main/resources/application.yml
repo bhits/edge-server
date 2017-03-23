@@ -54,32 +54,10 @@ zuul:
     #      'Set-Cookie' headers.
     #
     #      For more info, see: http://cloud.spring.io/spring-cloud-static/spring-cloud.html#_cookies_and_sensitive_headers
-    pp-ui:
-      path: /pp-ui/**
-    admin-ui:
-      path: /admin-ui/**
-    pep:
-      path: /pep/**
-      # Override Zuul default:
-      sensitiveHeaders: Cookie,Set-Cookie
-    pcm:
-      path: /pcm/**
-      # Override Zuul default:
-      sensitiveHeaders: Cookie,Set-Cookie
-    phr:
-      path: /phr/**
-      # Override Zuul default:
-      sensitiveHeaders: Cookie,Set-Cookie
-    try-policy:
-      path: /tryPolicy/**
-      # Override Zuul default:
-      sensitiveHeaders: Cookie,Set-Cookie
-    patient-registration:
-      path: /patientRegistration/**
-      # Override Zuul default:
-      sensitiveHeaders: Cookie,Set-Cookie
-    patient-user:
-      path: /patientUser/**
+    c2s-ui:
+      path: /c2s-ui/**
+    c2s-ui-api:
+      path: /c2s-ui-api/**
       # Override Zuul default:
       sensitiveHeaders: Cookie,Set-Cookie
     uaa:
@@ -89,17 +67,9 @@ zuul:
       # UAA is not registered with the discovery server, so the endpoint must be explictly mapped to the URL
       #    If you enable SSL for UAA, you must change the URL to 'https' and update the port for UAA below:
       url: http://localhost:8080/uaa
-    pls:
-      path: /pls/**
-      # Override Zuul default:
-      sensitiveHeaders: Cookie,Set-Cookie
-    context-handler:
-      path: /contextHandler/**
-      # Override Zuul default:
-      sensitiveHeaders: Cookie,Set-Cookie
 c2s:
   edge-server:
-    root-redirect-url: redirect:/pp-ui
+    root-redirect-url: redirect:/c2s-ui
 server:
   port: 80
 eureka:
