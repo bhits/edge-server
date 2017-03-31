@@ -42,9 +42,6 @@ eureka:
       defaultZone: ${eureka.client.protocol:http}://localhost:8761/eureka/
 ---
 spring.profiles: docker
-spring:
-  profiles:
-    include: ssl
 eureka:
   instance:
     prefer-ip-address: true
