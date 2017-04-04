@@ -56,8 +56,8 @@ zuul:
     #      For more info, see: http://cloud.spring.io/spring-cloud-static/spring-cloud.html#_cookies_and_sensitive_headers
     c2s-ui:
       path: /c2s-ui/**
-    staff-admin-ui:
-      path: /staff-admin-ui/**
+    staff-ui:
+      path: /staff-ui/**
     c2s-ui-api:
       path: /c2s-ui-api/**
       # Override Zuul default:
