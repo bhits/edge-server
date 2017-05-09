@@ -5,11 +5,11 @@ Edge Server acts as a gatekeeper preventing unauthorized external requests from 
 
 # Supported Source Code Tags and Current `Dockerfile` Link
 
-[`0.15.0 (latest)`](https://github.com/bhits/edge-server/releases/tag/0.15.0)
+[`0.17.0 (latest)`](https://github.com/bhits-dev/edge-server/releases/tag/0.17.0), [`0.15.0`](https://github.com/bhits-dev/edge-server/releases/tag/0.15.0)
 
-[`Current Dockerfile`](https://github.com/bhits/edge-server/blob/master/edge-server/src/main/docker/Dockerfile)
+[`Current Dockerfile`](https://github.com/bhits-dev/edge-server/blob/master/edge-server/src/main/docker/Dockerfile)
 
-For more information about this image, the source code, and its history, please see the [GitHub repository](https://github.com/bhits/edge-server).
+For more information about this image, the source code, and its history, please see the [GitHub repository](https://github.com/bhits-dev/edge-server).
 
 # What is Edge Server?
 
@@ -21,18 +21,18 @@ For more information and related downloads for Consent2Share, please visit [Cons
 
 ## Start a Edge Server instance
 
-Be sure to familiarize yourself with the repository's [README.md](https://github.com/bhits/edge-server) file before starting the instance.
+Be sure to familiarize yourself with the repository's [README.md](https://github.com/bhits-dev/edge-server) file before starting the instance.
 
-`docker run  --name edge-server -d bhits/edge-server:latest <additional program arguments>`
+`docker run  --name edge-server -d bhitsdev/edge-server:latest <additional program arguments>`
 
-*NOTE: In order for this API to fully function as a microservice in the Consent2Share application, it is required to setup the dependency microservices and the support level infrastructure. Please refer to the Consent2Share Deployment Guide in the corresponding Consent2Share release (see [Consent2Share Releases Page](https://github.com/bhits/consent2share/releases)) for instructions to setup the Consent2Share infrastructure.*
+*NOTE: In order for this API to fully function as a microservice in the Consent2Share application, it is required to setup the dependency microservices and the support level infrastructure. Please refer to the Consent2Share Deployment Guide in the corresponding Consent2Share release (see [Consent2Share Releases Page](https://github.com/bhits-dev/consent2share/releases)) for instructions to setup the Consent2Share infrastructure.*
 
 
 ## Configure
 
 The Spring profiles `application-default` and `docker` are activated by default when building images.
 
-This API can run with the default configuration which is from three places: `bootstrap.yml`, `application.yml`, and the data which the [`Configuration Server`](https://github.com/bhits/config-server) reads from the `Configuration Data Git Repository`. Both `bootstrap.yml` and `application.yml` files are located in the class path of the running application.
+This API can run with the default configuration which is from three places: `bootstrap.yml`, `application.yml`, and the data which the [`Configuration Server`](https://github.com/bhits-dev/config-server) reads from the `Configuration Data Git Repository`. Both `bootstrap.yml` and `application.yml` files are located in the class path of the running application.
 
 We **recommend** overriding the configuration as needed in the `Configuration Data Git Repository`, which is used by the `Configuration Server`.
 
@@ -40,7 +40,7 @@ Also, [Spring Boot](https://projects.spring.io/spring-boot/) supports other ways
 
 The following is an example to override the default database password:
 
-`docker run -d bhits/edge-server:latest --spring.datasource.password=strongpassword`
+`docker run -d bhitsdev/edge-server:latest --spring.datasource.password=strongpassword`
 
 ## Environment Variables
 
@@ -50,19 +50,19 @@ When you start the Edge Server image, you can edit the configuration of the Edge
 
 This environment variable is used to setup which jar file will run. you need mount the jar file to the root of container.
 
-`docker run --name edge-server -e JAR_FILE="edge-server-latest.jar" -v "/path/on/dockerhost/edge-server-latest.jar:/edge-server-latest.jar" -d bhits/edge-server:latest`
+`docker run --name edge-server -e JAR_FILE="edge-server-latest.jar" -v "/path/on/dockerhost/edge-server-latest.jar:/edge-server-latest.jar" -d bhitsdev/edge-server:latest`
 
 ### JAVA_OPTS 
 
 This environment variable is used to setup JVM argument, such as memory configuration.
 
-`docker run --name edge-server -e "JAVA_OPTS=-Xms512m -Xmx700m -Xss1m" -d bhits/edge-server:latest`
+`docker run --name edge-server -e "JAVA_OPTS=-Xms512m -Xmx700m -Xss1m" -d bhitsdev/edge-server:latest`
 
 ### DEFAULT_PROGRAM_ARGS 
 
 This environment variable is used to setup an application argument. The default value is "--spring.profiles.active=application-default,docker".
 
-`docker run --name edge-server -e DEFAULT_PROGRAM_ARGS="--spring.profiles.active=application-default,ssl,docker" -d bhits/edge-server:latest`
+`docker run --name edge-server -e DEFAULT_PROGRAM_ARGS="--spring.profiles.active=application-default,ssl,docker" -d bhitsdev/edge-server:latest`
 
 # Supported Docker versions
 
@@ -74,14 +74,14 @@ Please see the [Docker installation documentation](https://docs.docker.com/engin
 
 # License
 
-View [license](https://github.com/bhits/edge-server/blob/master/LICENSE) information for the software contained in this image.
+View [license](https://github.com/bhits-dev/edge-server/blob/master/LICENSE) information for the software contained in this image.
 
 # User Feedback
 
 ## Documentation 
 
-Documentation for this image is stored in the [bhits/edge-server](https://github.com/bhits/edge-server) GitHub repository. Be sure to familiarize yourself with the repository's README.md file before attempting a pull request.
+Documentation for this image is stored in the [bhitsdev/edge-server](https://github.com/bhits-dev/edge-server) GitHub repository. Be sure to familiarize yourself with the repository's README.md file before attempting a pull request.
 
 ## Issues
 
-If you have any problems with or questions about this image, please contact us through a [GitHub issue](https://github.com/bhits/edge-server/issues).
+If you have any problems with or questions about this image, please contact us through a [GitHub issue](https://github.com/bhits-dev/edge-server/issues).
