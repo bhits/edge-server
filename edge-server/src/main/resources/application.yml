@@ -58,12 +58,18 @@ zuul:
       path: /c2s-ui/**
     staff-ui:
       path: /staff-ui/**
+    provider-ui:
+      path: /provider-ui/**
     c2s-ui-api:
       path: /c2s-ui-api/**
       # Override Zuul default:
       sensitiveHeaders: Cookie,Set-Cookie
     staff-ui-api:
       path: /staff-ui-api/**
+      # Override Zuul default:
+      sensitiveHeaders: Cookie,Set-Cookie
+    provider-ui-api:
+      path: /provider-ui-api/**
       # Override Zuul default:
       sensitiveHeaders: Cookie,Set-Cookie
     uaa:
