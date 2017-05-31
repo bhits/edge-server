@@ -68,6 +68,10 @@ zuul:
       path: /staff-ui-api/**
       # Override Zuul default:
       sensitiveHeaders: Cookie,Set-Cookie
+    provider-ui-api:
+      path: /provider-ui-api/**
+      # Override Zuul default:
+      sensitiveHeaders: Cookie,Set-Cookie
     uaa:
       path: /uaa/**
       # Override Zuul default:
