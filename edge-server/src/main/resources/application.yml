@@ -72,6 +72,10 @@ zuul:
       path: /provider-ui-api/**
       # Override Zuul default:
       sensitiveHeaders: Cookie,Set-Cookie
+    pep-api:
+      path: /pep-api/**
+      # Override Zuul default:
+      sensitiveHeaders: Cookie,Set-Cookie
     uaa:
       path: /uaa/**
       # Override Zuul default:
