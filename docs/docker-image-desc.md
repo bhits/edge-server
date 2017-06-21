@@ -5,7 +5,8 @@ Edge Server acts as a gatekeeper preventing unauthorized external requests from 
 
 # Supported Source Code Tags and Current `Dockerfile` Link
 
-[`0.17.0 (latest)`](https://github.com/bhits-dev/edge-server/releases/tag/0.17.0), [`0.15.0`](https://github.com/bhits-dev/edge-server/releases/tag/0.15.0)
+[`0.18.0 (latest)`](https://github.com/bhits-dev/edge-server/releases/tag/0.18.0), [`0.17.0`](https://github
+.com/bhits-dev/edge-server/releases/tag/0.17.0), [`0.15.0`](https://github.com/bhits-dev/edge-server/releases/tag/0.15.0)
 
 [`Current Dockerfile`](https://github.com/bhits-dev/edge-server/blob/master/edge-server/src/main/docker/Dockerfile)
 
@@ -15,7 +16,7 @@ For more information about this image, the source code, and its history, please 
 
 The Edge Server acts as a gatekeeper to the outside world. It keeps unauthorized external requests from passing through. It uses [Spring Cloud Zuul](https://spring.io/guides/gs/routing-and-filtering/) as a routing framework, which serves as an entry point to the Consent2Share (C2S) microservices landscape. Zuul uses [Spring Cloud Ribbon](https://spring.io/guides/gs/client-side-load-balancing/) to lookup available services, and routes the external request to an appropriate service instance, facilitating Dynamic Routing and Load Balancing.
 
-For more information and related downloads for Consent2Share, please visit [Consent2Share](https://bhits.github.io/consent2share/).
+For more information and related downloads for Consent2Share, please visit [Consent2Share](https://bhits-dev.github.io/consent2share/).
 
 # How to use this image
 
