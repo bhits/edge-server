@@ -108,7 +108,7 @@ By default, the Edge Server (Zuul) exposes all the service endpoints that are re
 
 ## Contact
 
-If you have any questions, comments, or concerns please see [Consent2Share](http://bhits.github.io/consent2share/) project site.
+If you have any questions, comments, or concerns please see [Consent2Share](http://bhits-dev.github.io/consent2share/) project site.
 
 ## Report Issues
 
