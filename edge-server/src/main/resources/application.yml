@@ -60,6 +60,10 @@ zuul:
       path: /staff-ui/**
     provider-ui:
       path: /provider-ui/**
+    master-ui:
+      path: /master-ui/**
+    master-ui-api:
+          path: /master-ui-api/**
     c2s-ui-api:
       path: /c2s-ui-api/**
       # Override Zuul default:
