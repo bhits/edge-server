@@ -90,7 +90,7 @@ zuul:
 c2s:
   edge-server:
     root-redirect-url: redirect:/c2s-ui
-    expose-trace-id-in-response: false
+    expose-trace-headers-in-response: false
 server:
   port: 80
 eureka:
