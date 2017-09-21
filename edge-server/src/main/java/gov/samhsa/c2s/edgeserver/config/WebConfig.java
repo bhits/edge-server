@@ -1,4 +1,4 @@
-package gov.samhsa.c2s.edgeserver;
+package gov.samhsa.c2s.edgeserver.config;
 
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;

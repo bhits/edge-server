@@ -1,4 +1,4 @@
-package gov.samhsa.c2s.edgeserver.filters.post;
+package gov.samhsa.c2s.edgeserver.filter.zuul.post;
 
 import com.netflix.util.Pair;
 import com.netflix.zuul.ZuulFilter;
