@@ -55,13 +55,13 @@ zuul:
     #
     #      For more info, see: http://cloud.spring.io/spring-cloud-static/spring-cloud.html#_cookies_and_sensitive_headers
     c2s-ui:
-      path: /${c2s.c2s-ui.base-href}/**
+      path: /c2s-ui/**
     staff-ui:
-      path: /${c2s.staff-ui.base-href}/**
+      path: /staff-ui/**
     provider-ui:
-      path: /${c2s.provider-ui.base-href}/**
+      path: /provider-ui/**
     master-ui:
-      path: /${c2s.master-ui.base-href}/**
+      path: /master-ui/**
     master-ui-api:
       path: /master-ui-api/**
     c2s-ui-api:
