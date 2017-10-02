@@ -199,7 +199,9 @@
                                         <exclude>org.springframework:spring-webmvc:(,4.3.6.RELEASE]</exclude>
                                         <exclude>xerces:xercesImpl:(,2.11.0]</exclude>
                                         <exclude>xml-apis:xml-apis:(,1.4.01]</exclude>
-                                        <!-- DO NOT DELETE THIS COMMENTED LIST-->
+                                        <exclude>com.itextpdf:itextpdf:*</exclude>
+
+                                        <!-- TODO: commented out exclusions are either managed by Spring or already the latest version unless it is specified -->
                                         <!--<exclude>ch.qos.logback:logback-classic:(,1.1.11]</exclude>-->
                                         <!--<exclude>com.fasterxml.jackson.core:jackson-databind:(,2.8.9]</exclude>-->
                                         <!--<exclude>com.sun.jersey:jersey-core:(,1.19.1]</exclude>-->
