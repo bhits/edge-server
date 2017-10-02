@@ -201,7 +201,7 @@
                                         <exclude>xml-apis:xml-apis:(,1.4.01]</exclude>
                                         <exclude>com.itextpdf:itextpdf:*</exclude>
 
-                                        <!-- DO NOT DELETE THIS COMMENTED LIST-->
+                                        <!-- TODO: commented out exclusions are either managed by Spring or already the latest version unless it is specified -->
                                         <!--<exclude>ch.qos.logback:logback-classic:(,1.1.11]</exclude>-->
                                         <!--<exclude>com.fasterxml.jackson.core:jackson-databind:(,2.8.9]</exclude>-->
                                         <!--<exclude>com.sun.jersey:jersey-core:(,1.19.1]</exclude>-->
